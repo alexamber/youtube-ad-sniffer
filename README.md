@@ -15,7 +15,7 @@ Operation
 Building is simple:
 
 - run mvn install
-- get youtube-ad-sniffer-*-jar-with-dependencies.jar from local m2 repo
+- get youtube-ad-sniffer-*-jar-with-dependencies.jar from target folder or local m2 repo
 - create *.txt properties file with:
     - webdriver.driver= (i.e. chrome. The only browser that is supported for now)
     - webdriver.chrome.driver= (path to chromedriver executable. Can be got from https://sites.google.com/a/chromium.org/chromedriver/downloads)

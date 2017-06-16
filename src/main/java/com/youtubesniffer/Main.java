@@ -6,19 +6,21 @@ import com.youtubesniffer.core.webdriver.WebDriverFactory;
 import com.youtubesniffer.util.PropertyManager;
 
 public class Main {
+    private static Scanner scan = new Scanner(System.in, "UTF-8");
 
     public static void main(String[] args) {
         if (args.length != 1) {
-            throw new RuntimeException("Please specify location of properties file. Should contain:"
-                    + "\nwebdriver.driver=<driver-type>" + "\nwebdriver.chrome.driver=<path-to-chromedriver>"
-                    + "\nyoutube.base.url=<youtube-url>" + "\nadblock.path=<path-to-adblock-ext>" + "\n#Currently only chrome is supported"
-                    + "\n#Optional" + "\nwebdriver.implicity.wait=<timeout-in-ms>");
+            throw new RuntimeException(
+                    "Please specify location of properties file. Should contain:" + "\nwebdriver.driver=<driver-type>"
+                            + "\nwebdriver.chrome.driver=<path-to-chromedriver>" + "\nyoutube.base.url=<youtube-url>"
+                            + "\nadblock.path=<path-to-adblock-ext>" + "\n#Currently only chrome is supported"
+                            + "\n#Optional" + "\nwebdriver.implicity.wait=<timeout-in-ms>");
         }
         String propertyFile = args[0];
         PropertyManager.mergeProperties(propertyFile);
         WebDriverFactory wdf = WebDriverFactory.getInstance();
-        String searchPhrase = scanYoutubeSearchPhrase(new Scanner(System.in));
-        int numberOfVideos = scanNumberOfVideosToAnalyze(new Scanner(System.in));
+        String searchPhrase = scanYoutubeSearchPhrase(scan);
+        int numberOfVideos = scanNumberOfVideosToAnalyze(scan);
         triggerYoutubeSniffer(wdf, searchPhrase, numberOfVideos);
         resetDriverWithAdBlock(wdf);
         triggerYoutubeSniffer(wdf, searchPhrase, numberOfVideos);
@@ -36,8 +38,8 @@ public class Main {
     }
 
     private static int scanNumberOfVideosToAnalyze(final Scanner scan) {
-        System.out.println(
-                "Enter number of videos to analyze(Positive. Maximum 20. Only 1st page is in analysis for now):");
+        System.out
+                .println("Enter number of videos to analyze(Positive integer. Only 1st page is in analysis for now):");
         int requestedNumberOfVideos = scan.nextInt();
         if (requestedNumberOfVideos < 1) {
             throw new RuntimeException("Please run again and enter valid number of videos to analise.");
