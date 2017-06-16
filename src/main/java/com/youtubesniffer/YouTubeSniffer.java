@@ -20,7 +20,7 @@ public class YouTubeSniffer {
     private final String youtubeHost;
     private final String youtubeSearchPhrase;
     private final int numberOfVideosToAnalyze;
-    private boolean adblock;
+    private final boolean adblock;
     private WebDriver driver;
     private YouTubeHomePage youTubeHomePage;
 
@@ -31,7 +31,7 @@ public class YouTubeSniffer {
         this.adblock = adblock;
         this.youtubeSearchPhrase = youtubeSearchPhrase;
         this.numberOfVideosToAnalyze = numberOfVideosToAnalyze;
-        youTubeHomePage = new YouTubeHomePage(driver);
+        this.youTubeHomePage = new YouTubeHomePage(driver);
     }
 
     public void sniff() {

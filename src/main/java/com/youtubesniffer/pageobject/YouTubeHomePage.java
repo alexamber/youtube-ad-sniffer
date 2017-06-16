@@ -18,11 +18,6 @@ public class YouTubeHomePage extends AbstractPage {
     }
 
     public List<String> getVideoResultIds() {
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         return videoBlockResults.stream().map(e -> e.getAttribute("data-context-item-id")).collect(Collectors.toList());
     }
 
