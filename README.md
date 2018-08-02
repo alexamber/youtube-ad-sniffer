@@ -6,7 +6,7 @@ Youtube sniffer is a sample project to prove some skills in automation =D
 <br>
 The fun thing that this stuff is capable of:
 
-- searching for N youtube videos by some query and check weather adblock plugin helps to avoid preroll ad or not.
+- searching for N youtube videos by some query and check whether adblock plugin helps to avoid preroll ad or not.
 - produces reports for run with adblock on and off in format of pipe table |videoId|adAppearance|
 <br>
 <h3>
